@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Место</title>
+</head>
+
+<body class="page">
+    <section class="popup">
+        <form class="edit-form">
+            <h2 class="edit-form__title">Редактировать&nbsp;профиль</h2>
+            <fieldset class="edit-form__input-field">
+                <input type="text" value="Жак-Ив Кусто" placeholder="Имя" class="edit-form__input edit-form__input-name">
+                <input type="text" value="Исследователь океана" placeholder="Род занятий" class="edit-form__input edit-form__input-job"> 
+            </fieldset>
+            <button type="submit" class="edit-form__save-button"><p class="edit-form__save-button-text">Сохранить</p></button>
+            <img src="./images/icon-close.svg" alt="" class="edit-form__close-icon">
+        </form>
+    </section>
+    <header class="header position position_place_header">
+        <img src="./images/mesto-logo.svg" alt="Логотип Место" class="header__logo">
+        <div class="header__line"></div>
+    </header>
+    <main>
+        <section class="profile position">
+            <img src="./images/avatar-custo.jpg" alt="Аватарка" class="profile__avatar">
+            <div class="profile__info">
+                <p class="profile__name">Жак-Ив Кусто</p>
+                <div class="profile__edit"><img src="./images/icon-edit.svg" alt="Редактировать профиль" class="profile__edit-icon"></div>  
+                <p class="profile__text">Исследователь океана</p>
+            </div>
+            <div class="profile__add-button"><img src="./images/icon-add.svg" alt="Кнопка добавить" class="profile__add-button-icon"></div>
+        </section>
+        <section class="elements position position_place_elements">
+            <div class="element">
+                <img src="./images/photo-dombai.jpg" alt="Домбай" class="element__image">
+                <p class="element__name">Домбай</p>
+                <img src="./images/icon-like.svg" alt="" class="element__like-button">
+            </div>
+            <div class="element">
+                <img src="./images/photo-elbrus.jpg" alt="Гора Эльбрус" class="element__image">
+                <p class="element__name">Гора Эльбрус</p>
+                <img src="./images/icon-like.svg" alt="" class="element__like-button">
+            </div>
+            <div class="element">
+                <img src="./images/photo-kamchatka.jpg" alt="Камчатка" class="element__image">
+                <p class="element__name">Камчатка</p>
+                <img src="./images/icon-like.svg" alt="" class="element__like-button">
+            </div>
+            <div class="element">
+                <img src="./images/photo-karachaevsk.jpg" alt="Карачаевск" class="element__image">
+                <p class="element__name">Карачаевск</p>
+                <img src="./images/icon-like.svg" alt="" class="element__like-button">
+            </div>
+            <div class="element">
+                <img src="./images/photo-komi.jpg" alt="Коми" class="element__image">
+                <p class="element__name">Коми</p>
+                <img src="./images/icon-like.svg" alt="" class="element__like-button">
+            </div>
+            <div class="element">
+                <img src="./images/photo-kucherla.jpg" alt="Кучерла" class="element__image">
+                <p class="element__name">Кучерла</p>
+                <img src="./images/icon-like.svg" alt="" class="element__like-button">
+            </div>
+        </section>
+    </main>
+    <footer class="footer position position_place_footer">
+        <p class="footer__copyright">&copy; 2023 HazyIceTea</p>
+    </footer>
+    <script src="./scripts/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+.profile__edit{
+    border: 1px solid white;
+    max-width: 24px;
+    height: 24px;
+    align-self: center;
+    box-sizing: border-box;
+}
+
+.profile__edit:hover{
+    opacity: 0.6;
+    transition: opacity .15s linear;
+}

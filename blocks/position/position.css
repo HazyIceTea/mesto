@@ -1,0 +1,16 @@
+.position{
+    margin: 0 auto;
+    width: calc(100% - 200px*2);
+}
+
+@media screen and (max-width: 1150px) {
+    .position{
+        width: calc(100% - 40px*2);
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .position{
+        width: calc(100% - 18px*2);
+    }
+}
