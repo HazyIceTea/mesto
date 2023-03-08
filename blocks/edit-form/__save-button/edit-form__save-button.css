@@ -2,7 +2,15 @@
     background-color: #000;
     width: calc(100% - 36px*2);
     margin: 48px 36px 37px;
-    cursor: default;
+    cursor: pointer;
+    padding: 14px 125px 18px;
+    text-align: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: white;
 }
 
 .edit-form__save-button:hover{
@@ -14,5 +22,8 @@
     .edit-form__save-button{
         width: calc(100% - 22px*2);
         margin: 45px 22px 25px;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 14px 82px;
     }
 }

@@ -2,11 +2,10 @@
 @import url(../vendor/fonts/fonts.css);
 
 @import url(../blocks/page/page.css);
-
-@import url(../blocks/position/position.css);
-@import url(../blocks/position/_place/position_place_header.css);
-@import url(../blocks/position/_place/position_place_elements.css);
-@import url(../blocks/position/_place/position_place_footer.css);
+@import url(../blocks/page/__header/page__header.css);
+@import url(../blocks/page/__profile/page__profile.css);
+@import url(../blocks/page/__elements/page__elements.css);
+@import url(../blocks/page/__footer/page__footer.css);
 
 @import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/header/__logo/header__logo.css);
@@ -37,5 +36,4 @@
 @import url(../blocks/edit-form/__save-button/edit-form__save-button.css);
 @import url(../blocks/edit-form/__input-field/edit-form__input-field.css);
 @import url(../blocks/edit-form/__input/edit-form__input.css);
-@import url(../blocks/edit-form/__save-button-text/edit-form__save-button-text.css);
 @import url(../blocks/edit-form/__close-icon/edit-form__close-icon.css);

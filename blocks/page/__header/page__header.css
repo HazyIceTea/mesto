@@ -1,16 +1,17 @@
-.position{
-    margin: 0 auto;
+.page__header{
+    margin: 45px auto 40px;
     width: calc(100% - 200px*2);
 }
-
+    
 @media screen and (max-width: 1150px) {
-    .position{
+    .page__header{
         width: calc(100% - 40px*2);
     }
 }
-
+    
 @media screen and (max-width: 420px) {
-    .position{
-        width: calc(100% - 18px*2);
+    .page__header{
+        width: 100%;
+        margin-top: 0;
     }
 }

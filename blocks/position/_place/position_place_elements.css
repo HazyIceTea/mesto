@@ -1,9 +1,0 @@
-.position_place_elements{
-    margin-top: 51px;
-}
-
-@media screen and (max-width: 420px) {
-    .position_place_elements{
-        margin-top: 36px;
-    }
-}

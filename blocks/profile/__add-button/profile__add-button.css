@@ -1,6 +1,7 @@
 .profile__add-button{
     border: 2px solid white;
     margin: 35px 0 35px auto;
+    cursor: pointer;
 }
 
 .profile__add-button:hover{
