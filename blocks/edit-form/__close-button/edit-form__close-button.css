@@ -1,7 +1,7 @@
 .edit-form__close-button{
     position: absolute;
     top: -40px;
-    right: -40px;
+    right: -47px;
     cursor: pointer;
     border: 0;
     background-color: transparent;
@@ -14,7 +14,7 @@
 
 @media screen and (max-width: 520px) {
     .edit-form__close-button{
-        right: 0;
+        right: -8px;
         top: -36px;
     }
 }
