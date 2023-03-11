@@ -5,12 +5,14 @@
     cursor: pointer;
     padding: 14px 125px 18px;
     text-align: center;
-    font-family: 'Inter';
+    font-family: 'Inter', ‘Arial’, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     color: white;
+    border: 0;
+    border-radius: 2px;
 }
 
 .edit-form__save-button:hover{

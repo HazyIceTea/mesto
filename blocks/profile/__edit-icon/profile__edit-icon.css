@@ -1,3 +1,5 @@
-.profile__edit-icon{
-    margin: 7px;
+@media screen and (max-width: 420px) {
+    .profile__edit-icon{
+        max-width: 8px;
+    }
 }

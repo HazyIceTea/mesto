@@ -1,6 +1,8 @@
 .element__like-button{
-    margin: 30px 20px 30px 0;
+    margin: 30px 15px 25px 0;
     cursor: pointer;
+    border: 0;
+    background-color: white;
 }
 
 .element__like-button:hover{

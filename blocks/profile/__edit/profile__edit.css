@@ -2,12 +2,22 @@
     border: 1px solid white;
     max-width: 24px;
     height: 24px;
-    align-self: center;
-    box-sizing: border-box;
     cursor: pointer;
+    background-color: black;
+    margin-top: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile__edit:hover{
     opacity: 0.6;
     transition: opacity .15s linear;
+}
+
+@media screen and (max-width: 420px) {
+    .profile__edit{
+        height: 18px;
+        max-width: 18px;
+    }
 }
