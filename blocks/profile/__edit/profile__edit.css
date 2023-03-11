@@ -15,6 +15,7 @@
     transition: opacity .15s linear;
 }
 
+
 @media screen and (max-width: 420px) {
     .profile__edit{
         height: 18px;

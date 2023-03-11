@@ -4,7 +4,7 @@
     padding: 7px 56px;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 840px) {
     .profile__add-button-icon{
         padding: 13px 123px;
         height: 16px;
