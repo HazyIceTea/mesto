@@ -2,7 +2,7 @@
     border: 2px solid white;
     margin: 35px 0 35px auto;
     cursor: pointer;
-    background-color: black;
+    background-color: transparent;
 }
 
 .profile__add-button:hover{
