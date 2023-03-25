@@ -1,6 +1,6 @@
 .profile__edit{
     border: 1px solid white;
-    max-width: 24px;
+    width: 24px;
     height: 24px;
     cursor: pointer;
     background-color: transparent;
@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: url(../../../images/icon-edit.svg) center no-repeat;
 }
 
 .profile__edit:hover{
