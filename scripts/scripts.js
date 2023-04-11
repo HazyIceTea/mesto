@@ -1,4 +1,4 @@
-// popup bodies
+// // popup bodies
 const popupEdit = document.querySelector('.popup_event_edit');
 const popupAdd = document.querySelector('.popup_event_add-card');
 const popupPicture = document.querySelector('.popup_event_open-picture');
@@ -15,7 +15,7 @@ const buttonClosePicture = document.querySelector('.popup__close-button_event_op
 // popup edit
 const nameInput = document.querySelector('.edit-form__input_value_name');
 const jobInput = document.querySelector('.edit-form__input_value_job');
-const formEditProfile = document.querySelector('.edit-form');
+const formEditProfile = document.querySelector('.edit-form_event_edit');
 const nameNew = document.querySelector('.profile__name');
 const jobNew = document.querySelector('.profile__text');
 
@@ -28,6 +28,7 @@ const cardSource = document.querySelector('.edit-form__input_value_image-src');
 const cardTemplate = document.querySelector('.picture-card-template').content;
 const imageFull = document.querySelector('.popup__image-full');
 const imageTitle = document.querySelector('.popup__image-title');
+const buttonSubmitCard = document.querySelector('.edit-form__save-button_type_card');
 
 // handlers
 function handleFormSubmit (evt){
@@ -78,13 +79,11 @@ function renderCard(name, link){
 }
 
 function addCard(name, link){
-    if (!name || !link){
-        alert('Заполните все поля ввода');
-        return;
-    }
     const result = renderCard(name, link);
     imageList.prepend(result);
 }
+
+// popupAll.forEach((item)=>item.addEventListener('keypress',(evt)=>{closePopup(evt.target); console.log(evt)}));
 
 // popup edit listeners
 formEditProfile.addEventListener('submit', handleFormSubmit);
@@ -94,13 +93,19 @@ buttonOpenEditProfilePopup.addEventListener('click', function(){
     jobInput.value = jobNew.textContent;
 });
 buttonCloseEdit.addEventListener('click', function(){closePopup(popupEdit)});
+popupEdit.addEventListener('click', (evt) => {if(evt.target.classList.contains('popup')){closePopup(popupEdit)}});
+document.addEventListener('keyup', (evt) => {if(evt.key=='Escape' && popupEdit.classList.contains('popup_opened')){closePopup(popupEdit)}});
 
 // popup add listeners
-buttonOpenAddCardPopup.addEventListener('click', function(){openPopup(popupAdd); handleCardInputClear();});
+buttonOpenAddCardPopup.addEventListener('click', function(){openPopup(popupAdd); handleCardInputClear(); disableButton(buttonSubmitCard, validationConfig)});
 buttonCloseAdd.addEventListener('click', function(){closePopup(popupAdd);});
 pictureForm.addEventListener('submit', handleAddSave);
+popupAdd.addEventListener('click', (evt) => {if(evt.target.classList.contains('popup')){closePopup(popupAdd)}});
+document.addEventListener('keyup', (evt) => {if(evt.key=='Escape' && popupAdd.classList.contains('popup_opened')){closePopup(popupAdd)}});
 
 // popup picture listeners
 buttonClosePicture.addEventListener('click', function(){closePopup(popupPicture)});
+popupPicture.addEventListener('click', (evt) => {if(evt.target.classList.contains('popup')){closePopup(popupPicture)}});
+document.addEventListener('keyup', (evt) => {if(evt.key=='Escape' && popupPicture.classList.contains('popup_opened')){closePopup(popupPicture)}});
 
 initialCards.forEach(card => {addCard(card.name, card.link);});
