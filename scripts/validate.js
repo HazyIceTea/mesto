@@ -5,53 +5,54 @@ const validationConfig = ({
     inactiveButtonClass: 'edit-form__save-button_disabled',
     inputErrorClass: 'edit-form__input_type_error',
     errorClass: 'edit-form__validation-error'
-  }); 
+});
 
 
-function enableValidation({formSelector, ...rest}){
-  const forms = Array.from(document.querySelectorAll(formSelector))
-  forms.forEach((form) => setEventListeners(form, rest))
+function enableValidation({ formSelector, ...rest }) {
+    const forms = Array.from(document.querySelectorAll(formSelector))
+    forms.forEach((form) => setEventListeners(form, rest))
 }
 
-const disableButton = (button, {inactiveButtonClass}) => {
+const disableButton = (button, { inactiveButtonClass }) => {
     button.setAttribute('disabled', true);
     button.classList.add(inactiveButtonClass);
 }
 
-const enableButton = (button, {inactiveButtonClass}) => {
+const enableButton = (button, { inactiveButtonClass }) => {
     button.removeAttribute('disabled');
     button.classList.remove(inactiveButtonClass);
 }
 
-const hasInvalidField = (form) =>{
-  return form.some(item => !item.validity.valid);
+const hasInvalidField = (form) => {
+    return form.some(item => !item.validity.valid);
 }
 
-const checkCurrentValidity = (item) =>{
+const checkCurrentValidity = (item) => {
     const inputError = document.querySelector(`#${item.id}-error`)
-    if(item.checkValidity()){
+    if (item.checkValidity()) {
         inputError.textContent = '';
     }
-    else{
+    else {
         inputError.textContent = item.validationMessage;
     }
 }
 
-const setEventListeners = (form, {inputSelector, submitButtonSelector, inputErrorClass, ...rest}) =>{
+const setEventListeners = (form, { inputSelector, submitButtonSelector, inputErrorClass, ...rest }) => {
     const inputFields = Array.from(form.querySelectorAll(inputSelector));
     const button = form.querySelector(submitButtonSelector);
+    form.addEventListener('reset', () => { disableButton(button, rest); })
     inputFields.forEach((field) => field.addEventListener('input', () => {
         checkCurrentValidity(field);
-        if(field.checkValidity()){
+        if (field.checkValidity()) {
             field.classList.remove(inputErrorClass);
         }
-        else{
+        else {
             field.classList.add(inputErrorClass);
         }
-        if(hasInvalidField(inputFields)){
+        if (hasInvalidField(inputFields)) {
             disableButton(button, rest);
         }
-        else{
+        else {
             enableButton(button, rest);
         }
     }));
