@@ -47,7 +47,7 @@ class FormValidator {
     }
 
     _setEventListeners = () => {
-        this.form.addEventListener('reset', () => { this._disableButton(this.submitButton);})
+        this.form.addEventListener('reset', () => { this._disableButton(); })
         this.inputFields.forEach((field) => field.addEventListener('input', () => {
             this._checkCurrentValidity(field);
             this._toggleButtonState();

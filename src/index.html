@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 
 <body class="page">
     <header class="header page__header">
-        <img src="./images/mesto-logo.svg" alt="Логотип Место" class="header__logo">
+        <img src="<%=require('./images/mesto-logo.svg')%>" alt="Логотип Место" class="header__logo">
     </header>
     <main>
         <section class="profile page__profile">
-            <img src="./images/avatar-custo.jpg" alt="Аватарка" class="profile__avatar">
+            <img src="<%=require('./images/avatar-custo.jpg')%>" alt="Аватарка" class="profile__avatar">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__edit"></button>  
@@ -37,7 +36,7 @@
                     <input type="text" name="profile-job" placeholder="Род занятий" id="profile-job-input" class="edit-form__input edit-form__input_value_job" required minlength="2" maxlength="200">
                     <span class="edit-form__validation-error" id="profile-job-input-error"></span>
                 </fieldset>
-                <button type="submit" class="edit-form__save-button">Сохранить</button>
+                <button type="submit" class="edit-form__save-button edit-form__save-button_disabled" disabled>Сохранить</button>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>
@@ -53,7 +52,7 @@
                     <input type="url" name="picture-link" placeholder="Ссылка на картинку" id="picture-link-input" class="edit-form__input edit-form__input_value_image-src" required> 
                     <span class="edit-form__validation-error" id="picture-link-input-error"></span>
                 </fieldset>
-                <button type="submit" class="edit-form__save-button">Создать</button>
+                <button type="submit" class="edit-form__save-button edit-form__save-button_disabled" disabled>Создать</button>
             </form>
             <button type="button" class="popup__close-button"></button>
         </div>
@@ -75,8 +74,6 @@
             <button type="button" class="element__like-button"></button>
         </article>
     </template>
-
-    <script type = 'module' src="./scripts/scripts.js"></script>
     
 </body>
 

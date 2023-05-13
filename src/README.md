@@ -19,6 +19,6 @@ Js features:
   
 What's new:  
 Added:  
-*UI convenience
-*Validation
-*UX improvements
+* UI convenience
+* Validation
+* UX improvements

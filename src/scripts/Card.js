@@ -1,10 +1,11 @@
-import { openPopup, popupPicture, imageFull, imageTitle } from './scripts.js'
+// import { openPopup, popupPicture, imageFull, imageTitle } from './scripts.js'
 
 class Card {
-    constructor(name, url, templateSelector) {
-        this._name = name;
-        this._url = url;
+    constructor({ data, handleCardClick }, templateSelector) {
+        this._name = data.name;
+        this._url = data.link;
         this._templateSelector = templateSelector;
+        this._handleCardClick = handleCardClick; 
     }
 
     _getTemplate() {
@@ -29,7 +30,7 @@ class Card {
         this._card.querySelector('.element__button-delete').addEventListener('click', this._onDelete);
         this._buttonLike = this._card.querySelector('.element__like-button')
         this._buttonLike.addEventListener('click', this._onLike);
-        this._cardImage.addEventListener('click', this._onZoom);
+        this._cardImage.addEventListener('click', this._handleCardClick);
     }
 
     _onLike = () => {
@@ -41,12 +42,12 @@ class Card {
         this._card = null;
     }
 
-    _onZoom = () => {
-        openPopup(popupPicture);
-        imageFull.src = this._url;
-        imageFull.alt = `Фотография ${this._name}`;
-        imageTitle.textContent = this._name;
-    }
+    // _onZoom = () => {
+    //     openPopup(popupPicture);
+    //     imageFull.src = this._url;
+    //     imageFull.alt = `Фотография ${this._name}`;
+    //     imageTitle.textContent = this._name;
+    // }
 
 }
 
