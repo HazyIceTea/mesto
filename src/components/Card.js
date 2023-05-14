@@ -42,13 +42,6 @@ class Card {
         this._card = null;
     }
 
-    // _onZoom = () => {
-    //     openPopup(popupPicture);
-    //     imageFull.src = this._url;
-    //     imageFull.alt = `Фотография ${this._name}`;
-    //     imageTitle.textContent = this._name;
-    // }
-
 }
 
 export default Card;

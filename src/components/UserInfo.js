@@ -13,11 +13,8 @@ class UserInfo{
 
     setUserInfo(data){
         this._name.textContent = data.name;
-        this._info.textContent = data.link;
+        this._info.textContent = data.info;
     }
 }
-
-const test3 = new UserInfo({nameSelector: '.profile__name', infoSelector:'.profile__text'});
-test3.getUserInfo();
 
 export default UserInfo;
