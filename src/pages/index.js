@@ -31,6 +31,7 @@ const initialSection = new Section({
     }
 }, '.elements');
 
+
 Array.from(document.forms).forEach(item => {
     const toValidate = new FormValidator(validationConfig, item);
     toValidate.enableValidation()
@@ -50,16 +51,18 @@ const popupEditProfile = new PopupWithForm('.popup_event_edit', (evt) => {
 popupEditProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm('.popup_event_add-card', (evt) => {
-    const newCardSection = new Section({
-        items: popupAddCard.getInputValues(), renderer: (item) => {
-            newCardSection.addItem(createNewCard(item));
-            popupAddCard.close();
-        }
-    }, '.elements');
     evt.preventDefault();
+    newCardSection.items = popupAddCard.getInputValues();
     newCardSection.renderCard();
 })
 popupAddCard.setEventListeners();
+
+const newCardSection = new Section({
+    items: popupAddCard.getInputValues(), renderer: (item) => {
+        newCardSection.addItem(createNewCard(item));
+        popupAddCard.close();
+    }
+}, '.elements');
 
 buttonOpenEditProfilePopup.addEventListener('click', () => {
     popupEditProfile.open();
