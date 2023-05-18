@@ -52,17 +52,11 @@ popupEditProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm('.popup_event_add-card', (evt) => {
     evt.preventDefault();
-    newCardSection.items = popupAddCard.getInputValues();
-    newCardSection.renderCard();
+    initialSection.cardData = popupAddCard.getInputValues();
+    initialSection.renderCard();
+    popupAddCard.close();
 })
 popupAddCard.setEventListeners();
-
-const newCardSection = new Section({
-    items: popupAddCard.getInputValues(), renderer: (item) => {
-        newCardSection.addItem(createNewCard(item));
-        popupAddCard.close();
-    }
-}, '.elements');
 
 buttonOpenEditProfilePopup.addEventListener('click', () => {
     popupEditProfile.open();
