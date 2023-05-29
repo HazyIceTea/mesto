@@ -3,6 +3,7 @@ export default class Popup {
         this._popupSelector = popupSelector;
         this._currentPopup = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._submitButton = this._currentPopup.querySelector('.edit-form__save-button');
     }
 
     open() {
@@ -26,7 +27,14 @@ export default class Popup {
             if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close-button')) {
                 this.close();
             }
-        })
+        });
     }
-
+    renderLoading(isTrue){
+        if(isTrue){
+            this._submitButton.textContent = 'Сохранение...';
+        }
+        else{
+            this._submitButton.textContent = this._initialSubmitText;
+        }
+    }
 }

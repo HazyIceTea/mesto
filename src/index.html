@@ -11,12 +11,14 @@
         <img src="<%=require('./images/mesto-logo.svg')%>" alt="Логотип Место" class="header__logo">
     </header>
     <main>
-        <section class="profile page__profile">
-            <img src="<%=require('./images/avatar-custo.jpg')%>" alt="Аватарка" class="profile__avatar">
+        <section class="profile page__profile">       
+            <button type ="submit" class="profile__avatar-button">
+                <img src="" alt="Аватарка" class="profile__avatar">
+            </button>
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 class="profile__name"></h1>
                 <button type="button" class="profile__edit"></button>  
-                <p class="profile__text">Исследователь океана</p>
+                <p class="profile__text"></p>
             </div>
             <button type="button" class="profile__add-button"></button>
         </section>
@@ -66,12 +68,37 @@
         </div>
     </div>
 
+    <div class="popup popup_event_confirm">
+        <div class="popup__container">
+            <h2 class="edit-form__title">Вы уверены?</h2>
+            <button type="submit" class="edit-form__save-button">Да</button>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </div>
+
+    <div class="popup popup_event_update-avatar">
+        <div class="popup__container">
+            <form name="update-avatar" class="edit-form edit-form_event_update-avatar" novalidate>
+                <h2 class="edit-form__title">Обновить аватар</h2>
+                <fieldset class="edit-form__input-field">
+                    <input type="url" name="avatar" placeholder="Ссылка на аватар" id="change-avatar-input" class="edit-form__input edit-form__input_value_change-avatar" required>
+                    <span class="edit-form__validation-error" id="change-avatar-input-error"></span>
+                </fieldset>
+                <button type="submit" class="edit-form__save-button edit-form__save-button_disabled" disabled>Сохранить</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+        </div>
+    </div>
+
     <template class="picture-card-template">
         <article class="element">
             <img class="element__image">
             <h2 class="element__name"></h2>
             <button class="element__button-delete"></button>
-            <button type="button" class="element__like-button"></button>
+            <div>
+                <button type="button" class="element__like-button"></button>
+                <p class="element__like-button-counter"></p>
+            </div>
         </article>
     </template>
     

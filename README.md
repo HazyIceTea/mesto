@@ -13,12 +13,14 @@ Js features:
 * Opening and closing different pop-ups;  (now with esc too!)
 * Adding and removing new elements;  (add whatever card, now with filling hints!)
 * Profile Editing  
-* Now made with OOP principles!
-
-* [Github Pages](https://hazyicetea.github.io/mesto/)  
+* Now made with OOP principles!  
+* Validation  
   
 What's new:  
 Added:  
 * UI convenience
-* Validation
 * UX improvements
+* Likes system  
+* Server interactions  
+  
+* [Github Pages](https://hazyicetea.github.io/mesto/)  
