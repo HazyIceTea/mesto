@@ -24,7 +24,8 @@ function createNewCard(item) {
         },
         handleDeleteClick: (cardId) => {
             popupConfirm.open();
-            popupConfirm.submitLogic = () => {
+            popupConfirm.submitLogic = (evt) => {
+                evt.preventDefault();
                 api.deleteCard(cardId)
                     .catch(err => console.error(`Ошибка удаления карточки ${err}`));
                 card.removeCardFromDom();
