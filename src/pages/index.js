@@ -22,11 +22,9 @@ function createNewCard(item) {
             popupConfirm.open();
             popupConfirm.submitLogic = (evt) => {
                 evt.preventDefault();
-                popupConfirm.renderLoading(true)
                 api.deleteCard(cardId)
                     .then(card.removeCardFromDom(), popupConfirm.close())
-                    .catch(err => console.error(`Ошибка удаления карточки ${err}`))
-                    .finally(popupConfirm.renderLoading(false));
+                    .catch(err => console.error(`Ошибка удаления карточки ${err}`));
             };
             popupConfirm.setSubmit();
         },
