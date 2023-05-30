@@ -8,4 +8,8 @@ export default class PopupConfirm extends Popup{
     setSubmit(){
         this._submitButton.addEventListener('click', this.submitLogic);
     }
+    close(){
+        this._submitButton.removeEventListener('click', this.submitLogic);
+        super.close();
+    }
 }

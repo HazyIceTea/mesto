@@ -15,8 +15,8 @@ class Section {
         })
     }
 
-    renderCard() {
-        this._renderer(this.cardData);
+    renderCard(data) {
+        this._renderer(data);
     }
 }
 

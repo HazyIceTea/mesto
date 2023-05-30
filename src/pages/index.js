@@ -13,10 +13,6 @@ const api = new Api();
 
 const info = new UserInfo({ nameSelector: '.profile__name', infoSelector: '.profile__text', avatarSeceltor: '.profile__avatar' });
 
-api.getUserInfo()
-    .then(res => info.myId = res._id)
-    .catch(err => console.error(`Ошибка получения ID ${err}`)); // get id
-
 function createNewCard(item) {
     const card = new Card({
         data: item, handleCardClick: () => {
@@ -26,10 +22,11 @@ function createNewCard(item) {
             popupConfirm.open();
             popupConfirm.submitLogic = (evt) => {
                 evt.preventDefault();
+                popupConfirm.renderLoading(true)
                 api.deleteCard(cardId)
-                    .catch(err => console.error(`Ошибка удаления карточки ${err}`));
-                card.removeCardFromDom();
-                popupConfirm.close();
+                    .then(card.removeCardFromDom(), popupConfirm.close())
+                    .catch(err => console.error(`Ошибка удаления карточки ${err}`))
+                    .finally(popupConfirm.renderLoading(false));
             };
             popupConfirm.setSubmit();
         },
@@ -66,10 +63,11 @@ popupConfirm.setEventListeners();
 // форма смены аватара
 const popupAvatar = new PopupWithForm('.popup_event_update-avatar', (evt) => {
     evt.preventDefault();
+    popupAvatar.renderLoading(true);
     api.changeAvatar(popupAvatar.getInputValues())
-        .then(res => info.setUserInfo(res))
-        .catch(err => console.error(`Ошибка смены аватара ${err}`));
-    popupAvatar.close();
+        .then(res => info.setUserInfo(res), popupAvatar.close())
+        .catch(err => console.error(`Ошибка смены аватара ${err}`))
+        .finally(popupAvatar.renderLoading(false));
 });
 popupAvatar.setEventListeners();
 
@@ -96,32 +94,29 @@ const popupEditProfile = new PopupWithForm('.popup_event_edit', (evt) => {
     evt.preventDefault();
     popupEditProfile.renderLoading(true);
     api.sendUserInfo(popupEditProfile.getInputValues())
-        .then((res) => info.setUserInfo(res))
-        .catch(err => console.error(`Ошибка изменения профиля ${err}`));
-    popupEditProfile.renderLoading(false);
-    popupEditProfile.close();
+        .then((res) => info.setUserInfo(res), popupEditProfile.close())
+        .catch(err => console.error(`Ошибка изменения профиля ${err}`))
+        .finally(popupEditProfile.renderLoading(false))
 })
 popupEditProfile.setEventListeners();
 
-// Изначальная отрисовка страницы
-api.getUserInfo()
-    .then(res => info.setUserInfo(res))
-    .catch(err => console.error(`Ошибка получения информации о пользователе ${err}`)); //установить инфо с сервера в профиль
-api.getAllCards()
-    .then(res => initialSection.renderAll(res.reverse()))
-    .catch(err => console.error(`Ошибка получения карточек с сервера ${err}`)) //грузануть карточки
+// изначальная отрисовка страницы
+Promise.all([api.getUserInfo(), api.getAllCards()])
+    .then(([userRes, cardRes]) => {
+        info.myId = userRes._id; // get id
+        info.setUserInfo(userRes); // set info on page
+        initialSection.renderAll(cardRes.reverse()); //render all cards from server
+    })
+    .catch(err => console.error(`Ошибка при загрузке начальных данных страницы ${err}`))
 
 // форма добавления карточки
 const popupAddCard = new PopupWithForm('.popup_event_add-card', (evt) => {
     evt.preventDefault();
-    initialSection.cardData = popupAddCard.getInputValues();
-    initialSection.cardData.owner = {};
-    initialSection.cardData.owner._id = info.myId;
-    initialSection.cardData.likes = [];
-    initialSection.renderCard();
-    api.sendCard(initialSection.cardData)
-        .catch(err => console.error(`Ошибка отправки карточки ${err}`));
-    popupAddCard.close();
+    popupAddCard.renderLoading(true);
+    api.sendCard(popupAddCard.getInputValues())
+        .then(res => initialSection.renderCard(res), popupAddCard.close())
+        .catch(err => console.error(`Ошибка отправки карточки ${err}`))
+        .finally(popupAddCard.renderLoading(false));
 })
 popupAddCard.setEventListeners();
 
