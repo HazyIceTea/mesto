@@ -43,11 +43,11 @@ class Card {
 
     _onLike = () => {
         this._handleLikeClick(this._cardId, this._buttonLike);
-        this._buttonLike.classList.toggle('element__like-button_active');
     }
 
     setLikesAmount(likes){
         this._likesCounter.textContent = likes;
+        this._buttonLike.classList.toggle('element__like-button_active');
     }
 
     _onDelete = () => {

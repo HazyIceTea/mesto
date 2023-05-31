@@ -23,7 +23,7 @@ function createNewCard(item) {
             popupConfirm.submitLogic = (evt) => {
                 evt.preventDefault();
                 api.deleteCard(cardId)
-                    .then(card.removeCardFromDom(), popupConfirm.close())
+                    .then(() => {card.removeCardFromDom(); popupConfirm.close()})
                     .catch(err => console.error(`Ошибка удаления карточки ${err}`));
             };
             popupConfirm.setSubmit();
@@ -63,9 +63,9 @@ const popupAvatar = new PopupWithForm('.popup_event_update-avatar', (evt) => {
     evt.preventDefault();
     popupAvatar.renderLoading(true);
     api.changeAvatar(popupAvatar.getInputValues())
-        .then(res => info.setUserInfo(res), popupAvatar.close())
+        .then(res => {info.setUserInfo(res); popupAvatar.close()})
         .catch(err => console.error(`Ошибка смены аватара ${err}`))
-        .finally(popupAvatar.renderLoading(false));
+        .finally(() => popupAvatar.renderLoading(false));
 });
 popupAvatar.setEventListeners();
 
@@ -92,9 +92,9 @@ const popupEditProfile = new PopupWithForm('.popup_event_edit', (evt) => {
     evt.preventDefault();
     popupEditProfile.renderLoading(true);
     api.sendUserInfo(popupEditProfile.getInputValues())
-        .then((res) => info.setUserInfo(res), popupEditProfile.close())
+        .then((res) => {info.setUserInfo(res); popupEditProfile.close()})
         .catch(err => console.error(`Ошибка изменения профиля ${err}`))
-        .finally(popupEditProfile.renderLoading(false))
+        .finally(() => popupEditProfile.renderLoading(false))
 })
 popupEditProfile.setEventListeners();
 
@@ -112,9 +112,9 @@ const popupAddCard = new PopupWithForm('.popup_event_add-card', (evt) => {
     evt.preventDefault();
     popupAddCard.renderLoading(true);
     api.sendCard(popupAddCard.getInputValues())
-        .then(res => initialSection.renderCard(res), popupAddCard.close())
+        .then(res => {initialSection.renderCard(res); popupAddCard.close()})
         .catch(err => console.error(`Ошибка отправки карточки ${err}`))
-        .finally(popupAddCard.renderLoading(false));
+        .finally(() => popupAddCard.renderLoading(false));
 })
 popupAddCard.setEventListeners();
 
